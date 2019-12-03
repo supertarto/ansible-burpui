@@ -1,2 +1,28 @@
 ---
+- name: Reload Systemd
+  systemd:
+    daemon_reload: true
+  notify: Enable BurpUI
 
+- name: Enable BurpUI
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items:
+    - gunicorn
+  notify: Wait BurpUI
+
+- name: Restart BurpUI
+  service:
+    name: "{{ item }}"
+    state: restarted
+  with_items:
+    - gunicorn
+  notify: Wait BurpUI
+
+- name: Wait BurpUI
+  wait_for:
+    timeout: 60
+    delay: 2
+    port: "{{ burpui_global_port }}"

@@ -1,2 +1,23 @@
 ---
+- name: "Include OS specific variables."
+  include_vars: "{{ ansible_os_family }}.yml"
 
+- include_tasks: requirements.yml
+
+- include_tasks: python3_pip.yml
+
+# Directory already created during Burp Installation, if the burp Server is on the same host
+- name: "Create Burp directory"
+  file:
+    path: /etc/burp
+    state: directory
+
+- name: "Copy burpui.cfg"
+  template:
+    src: "{{ burpui_template_config_name }}"
+    dest: "/etc/burp/burpui.cfg"
+    owner: "{{ burpui_user }}"
+    group: "{{ burpui_group }}"
+  notify: Restart BurpUI
+
+- include_tasks: gunicorn.yml

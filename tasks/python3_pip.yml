@@ -1,0 +1,23 @@
+---
+- name: "Check if burpui is already installed (check mode)"
+  pip:
+    name: "{{ burpui_pip_package_name }}"
+    state: present
+    executable: "pip3"
+  register: burpui_installed_check
+  check_mode: yes
+
+- name: "Install needed pip modules"
+  pip:
+    name: '{{ burpui_pip_present }}'
+    state: present
+    executable: "pip3"
+
+- name: "Install Burp-ui packages with pip"
+  pip:
+    name: "{{ item.name }}"
+    state: present
+    version: "{{ item.version }}"
+    executable: "pip3"
+  with_items: "{{ burpui_pip_packages }}"
+  notify: Restart BurpUI

@@ -12,6 +12,7 @@ platforms:
     image: "thetarto/ansible-${MOLECULE_DISTRIB}"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: /lib/systemd/systemd
     privileged: true
     pre_build_image: true
 provisioner:
