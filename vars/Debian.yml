@@ -1,7 +1,7 @@
 ---
 burpui_system_absent:
   - python3-cryptography
-  
+
 burpui_py3_packages:
   - python3
   - python3-dev
