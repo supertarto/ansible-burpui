@@ -5,7 +5,7 @@
     state: present
     executable: "pip3"
   register: burpui_installed_check
-  check_mode: yes
+  check_mode: true
 
 - name: "Install needed pip modules"
   pip:

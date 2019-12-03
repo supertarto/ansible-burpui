@@ -9,13 +9,13 @@ burpui_group: 'root'
 
 # Uncomment needed package
 burpui_pip_packages:
-  - { name: "{{ burpui_pip_package_name }}", version: "{{ burpui_version }}" }
-  - { name: "{{ burpui_pip_package_name }}[ldap_authentication]", version: "{{ burpui_version }}" }
-  - { name: "{{ burpui_pip_package_name }}[gunicorn]", version: "{{ burpui_version }}" }
-# - { name: "{{ burpui_pip_package_name }}[sql]", version: "{{ burpui_version }}" }
-# - { name: "{{ burpui_pip_package_name }}[gunicorn-extra]", version: "{{ burpui_version }}" }
-# - { name: "{{ burpui_pip_package_name }}[celery]", version: "{{ burpui_version }}" }
-# - { name: "{{ burpui_pip_package_name }}[websocket]", version: "{{ burpui_version }}" }
+  - {name: "{{ burpui_pip_package_name }}", version: "{{ burpui_version }}"}
+  - {name: "{{ burpui_pip_package_name }}[ldap_authentication]", version: "{{ burpui_version }}"}
+  - {name: "{{ burpui_pip_package_name }}[gunicorn]", version: "{{ burpui_version }}"}
+# - {name: "{{ burpui_pip_package_name }}[sql]", version: "{{ burpui_version }}"}
+# - {name: "{{ burpui_pip_package_name }}[gunicorn-extra]", version: "{{ burpui_version }}"}
+# - {name: "{{ burpui_pip_package_name }}[celery]", version: "{{ burpui_version }}"}
+# - {name: "{{ burpui_pip_package_name }}[websocket]", version: "{{ burpui_version }}"}
 
 # Add th dependancy you need.
 burpui_pip_present:
@@ -74,7 +74,7 @@ burpui_production_proxy_fix_args: "{'x_for': {num_proxies}, 'x_host': {num_proxi
 # [Websocket]
 burpui_websocket_enabled: "true"
 burpui_websocket_embedded: "false"
-#redis, ou <url redis>, ou none
+# redis, ou <url redis>, ou none
 burpui_websocket_broker: "none"
 burpui_websocket_url: "none"
 burpui_websocket_debug: "false"
@@ -132,7 +132,7 @@ burpui_basic_priority: "2"
 # Mixed allow textual password in conf file. Change it in production!
 burpui_basic_mixed: "true"
 burpui_basic_users:
-  - { name: "admin", password: "admin" }
+  - {name: "admin", password: "admin"}
 # [LOCAL:AUTH]
 burpui_local_enabled: false
 burpui_local_priority: "3"

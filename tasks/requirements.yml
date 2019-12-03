@@ -1,7 +1,7 @@
 ---
 - name: "REQUIS - Update du cache APT (Debian)"
   apt:
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 43200
   changed_when: false
   when: ansible_os_family == 'Debian'
