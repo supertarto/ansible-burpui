@@ -1,5 +1,6 @@
 # Ansible BurpUI
 [![Build Status](https://travis-ci.org/supertarto/ansible-burpui.svg?branch=master)](https://travis-ci.org/supertarto/ansible-burpui)
+Install and configure BurpUI with ansible
 
 ## Requirements
 
