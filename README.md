@@ -5,7 +5,6 @@ Install and configure BurpUI with ansible
 ## Requirements
 
 ## Tested plateform
-* Debian 9 (Stretch)
 * Debian 10 (Buster)
 
 ## Role variables
