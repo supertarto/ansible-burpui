@@ -1,5 +1,5 @@
 ---
-- name: "REQUIS - Update du cache APT (Debian)"
+- name: "Update apt-cache (Debian)"
   apt:
     update_cache: true
     cache_valid_time: 43200
