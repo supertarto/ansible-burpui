@@ -1,6 +1,7 @@
 # Ansible BurpUI
 [![Build Status](https://travis-ci.org/supertarto/ansible-burpui.svg?branch=master)](https://travis-ci.org/supertarto/ansible-burpui)
-Install and configure BurpUI with ansible. This role is meant to suits my need and is inspired by https://github.com/CoffeeITWorks/ansible_burpui_server If you want a more complete role, go check it!
+
+Install and configure BurpUI with ansible. This role is meant to suits my need and is inspired by https://github.com/CoffeeITWorks/ansible_burpui_server if you want a more complete role, go check it!
 
 ## Requirements
 A burp backup server
