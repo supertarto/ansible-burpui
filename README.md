@@ -1,5 +1,5 @@
 # Ansible BurpUI
-[![Build Status](https://travis-ci.com/supertarto/ansible-burpui.svg?branch=master)](https://travis-ci.com/supertarto/ansible-burpui)
+[![CI](https://github.com/supertarto/ansible-burpui/workflows/CI/badge.svg?event=push)](https://github.com/supertarto/ansible-burpui/actions?query=workflow%3ACI)
 
 Install and configure BurpUI with ansible. This role is meant to suits my need and is inspired by https://github.com/CoffeeITWorks/ansible_burpui_server if you want a more complete role, go check it!
 
