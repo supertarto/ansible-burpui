@@ -1,22 +1,22 @@
 ---
 - name: "Update apt-cache (Debian)"
-  apt:
+  ansible.builtin.apt:
     update_cache: true
     cache_valid_time: 43200
   changed_when: false
   when: ansible_os_family == 'Debian'
 
 - name: "Install python-setuptools"
-  package:
+  ansible.builtin.package:
     name: ['python3-setuptools']
     state: present
 
 - name: "Install requirements"
-  package:
+  ansible.builtin.package:
     name: "{{ burpui_py3_packages| join(',') }}"
     state: present
 
 - name: "Delete cryptography to reinstall it with Pip"
-  package:
+  ansible.builtin.package:
     name: "{{ burpui_system_absent }}"
     state: absent

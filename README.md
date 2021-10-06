@@ -9,21 +9,27 @@ A burp backup server
 
 ## Tested plateform
 * Debian 10 (Buster)
+* Debian 11 (Bulleyes)
 
 ## Role variables
 Information about burpui version, wich template to use (0.6.6 and 0.7.0 provided) as conf file.
+
 ```yml
 burpui_pip_package_name: "burp-ui"
 burpui_version: 0.6.6
 burpui_template_config_name: burpui-0.6.6.cfg.j2
 burpui_global_port: "5000"
 ```
+
 Name of the burpui user and group.
+
 ```yml
 burpui_user: 'root'
 burpui_group: 'root'
 ```
+
 A list of burpui package to install. Some are commented by default.
+
 ```yml
 burpui_pip_packages:
   - {name: "{{ burpui_pip_package_name }}", version: "{{ burpui_version }}"}
@@ -34,7 +40,9 @@ burpui_pip_packages:
 # - {name: "{{ burpui_pip_package_name }}[celery]", version: "{{ burpui_version }}"}
 # - {name: "{{ burpui_pip_package_name }}[websocket]", version: "{{ burpui_version }}"}
 ```
+
 List of dependencies needed to install burpUI.
+
 ```yml
 burpui_pip_present:
   - "cryptography"
@@ -48,7 +56,9 @@ burpui_pip_present:
   - "Flask-Session"
   - "Flask-Migrate"
 ```
+
 Those values are used only in the burpui.cfg file for the version 0.6.6. 
+
 ```yml
 burpui_standalone: true
 burpui_global_version: "2"
@@ -57,7 +67,9 @@ burpui_ui_extras: []
 burpui_backend_bhost: '::1'
 burpui_backend_bport: '4972'
 ```
+
 List of variables used in burpui.cfg Attapt those to your needs.
+
 ```yml
 ############
 # [global]
@@ -169,9 +181,12 @@ burpui_basic_acl_users: []
 #  - +moderator = user5,user6
 #  - @moderator = '{"agents":{"ro":["agent1"]}}'
 ```
+
 ## Installation
-```
+
+```bash
 ansible-galaxy install supertarto.burpui
 ```
+
 ## License
 GPL V3.0

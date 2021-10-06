@@ -1,6 +1,6 @@
 ---
 - name: "Check if burpui is already installed (check mode)"
-  pip:
+  ansible.builtin.pip:
     name: "{{ burpui_pip_package_name }}"
     state: present
     executable: "pip3"
@@ -8,13 +8,13 @@
   check_mode: true
 
 - name: "Install needed pip modules"
-  pip:
+  ansible.builtin.pip:
     name: '{{ burpui_pip_present }}'
     state: present
     executable: "pip3"
 
 - name: "Install Burp-ui packages with pip"
-  pip:
+  ansible.builtin.pip:
     name: "{{ item.name }}"
     state: present
     version: "{{ item.version }}"

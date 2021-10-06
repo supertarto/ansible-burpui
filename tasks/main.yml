@@ -8,12 +8,12 @@
 
 # Directory already created during Burp Installation, if the burp Server is on the same host
 - name: "Create Burp directory"
-  file:
+  ansible.builtin.file:
     path: /etc/burp
     state: directory
 
 - name: "Copy burpui.cfg"
-  template:
+  ansible.builtin.template:
     src: "{{ burpui_template_config_name }}"
     dest: "/etc/burp/burpui.cfg"
     owner: "{{ burpui_user }}"

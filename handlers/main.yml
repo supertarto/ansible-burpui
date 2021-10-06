@@ -1,11 +1,11 @@
 ---
 - name: Reload Systemd
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
   notify: Enable BurpUI
 
 - name: Enable BurpUI
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     state: started
     enabled: true
@@ -14,7 +14,7 @@
   notify: Wait BurpUI
 
 - name: Restart BurpUI
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     state: restarted
   with_items:
@@ -22,7 +22,7 @@
   notify: Wait BurpUI
 
 - name: Wait BurpUI
-  wait_for:
+  ansible.builtin.wait_for:
     timeout: 60
     delay: 2
     port: "{{ burpui_global_port }}"

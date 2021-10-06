@@ -1,6 +1,6 @@
 ---
 - name: "Uninstall Gunicorn package if present"
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: absent
   with_items:
@@ -8,46 +8,46 @@
     - python-gunicorn
 
 - name: "Create Gunicorn log directory /var/log/gunicorn"
-  file:
+  ansible.builtin.file:
     path: '/var/log/gunicorn'
     state: directory
     owner: "{{ burpui_user }}"
     group: "{{ burpui_group }}"
 
 - name: "Install Gunicorn using pip3"
-  pip:
+  ansible.builtin.pip:
     name: "gunicorn>=19.7.1"
     state: present
     executable: "pip3"
 
 - name: "Check if gunicorn directory is /usr/local/bin/gunicorn"
-  stat:
+  ansible.builtin.stat:
     path: /usr/local/bin/gunicorn
   register: gunicorn_local_bin_stat
 
 - name: "Set gunicorn bin path variable as /usr/local/bin/gunicorn"
-  set_fact:
+  ansible.builtin.set_fact:
     burpui_gunicorn_bin: /usr/local/bin/gunicorn
   when: gunicorn_local_bin_stat.stat.exists
 
 - name: "Check if gunicorn directory is /usr/bin/gunicorn"
-  stat:
+  ansible.builtin.stat:
     path: /usr/bin/gunicorn
   register: gunicorn_bin_stat
 
 - name: "Set gunicorn bin path variable as /usr/bin/gunicorn"
-  set_fact:
+  ansible.builtin.set_fact:
     burpui_gunicorn_bin: /usr/bin/gunicorn
   when: gunicorn_bin_stat.stat.exists
 
 - name: "Install gunicorn Daemon"
-  template:
+  ansible.builtin.template:
     src: gunicorn_systemd.j2
     dest: /etc/systemd/system/gunicorn.service
   notify: Reload Systemd
 
 - name: "Copy burpui_gunicorn.py"
-  template:
+  ansible.builtin.template:
     mode: 0755
     src: burpui_gunicorn.py.j2
     dest: /etc/burp/burpui_gunicorn.py
